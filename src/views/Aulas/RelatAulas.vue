@@ -9,7 +9,7 @@
           >
         </div>
       </div>
-      <v-select
+      <v-autocomplete
         v-model="turma"
         :items="turmas"
         item-value="id"
@@ -17,7 +17,7 @@
         label="Selecione a turma"
         @change="getListagem"
         clearable
-      ></v-select>
+      ></v-autocomplete>
     </div>
     <v-data-table
       v-show="mostraTable"
@@ -92,7 +92,7 @@ export default {
         .get(`/aulas/rel/${this.turma}`)
         .then(() => {
           this.$toast.fire("PDF Gerado com sucesso", "", "success");
-          window.open(`http://localhost:3000/aulas/rel/${this.turma}`);
+          window.open(`${this.$http.defaults.baseURL}aulas/rel/${this.turma}`);
         })
         .catch((err) => {
           console.log(err);

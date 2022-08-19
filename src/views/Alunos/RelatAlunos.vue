@@ -42,9 +42,7 @@ export default {
     getListagem() {
       this.$http.get("/alunos").then((response) => {
         this.alunos = response.data;
-        console.log(this.alunos);
       });
-      console.log(this.alunos);
     },
     gerarPDF() {
       this.$http
@@ -52,10 +50,11 @@ export default {
         .then((response) => {
           console.log(response);
           this.$toast.fire("PDF Gerado com sucesso", "", "success");
-          window.open("http://localhost:3000/alunos/rel");
+          window.open(`${this.$http.defaults.baseURL}alunos/rel`);
         })
-        .catch(() => {
+        .catch((err) => {
           this.$toast.fire("Erro ao gerar PDF", "", "error");
+          console.log(err);
         });
     },
   },

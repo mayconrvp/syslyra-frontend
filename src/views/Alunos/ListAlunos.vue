@@ -101,7 +101,6 @@ export default {
             this.efetuarLogout();
             ("");
           }
-          console.log(err);
         });
     },
     editItem(aluno) {
@@ -120,7 +119,6 @@ export default {
       });
     },
     deleteItem(aluno) {
-      console.log(aluno);
       this.$swal({
         title: "Você tem certeza?",
         text: `Deseja realmente excluir o(a) aluno(a) selecionado(a)? Item: ${aluno.nome}`,

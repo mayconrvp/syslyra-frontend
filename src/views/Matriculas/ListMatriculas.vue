@@ -6,7 +6,7 @@
     <div class="subtitle my-5 ml-3">
       <h4>Selecione o aluno para ser matriculado</h4>
 
-      <v-select
+      <v-autocomplete
         clearable
         v-model="aluno"
         :items="alunos"
@@ -16,7 +16,7 @@
         @change="getListagem"
         label="Aluno"
         required
-      ></v-select>
+      ></v-autocomplete>
       <div class="text-center">
         <v-btn
           id="btnA"

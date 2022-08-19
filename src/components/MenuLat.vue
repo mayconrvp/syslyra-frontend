@@ -173,6 +173,11 @@ export default {
         icon: "mdi-guitar-acoustic",
         to: "/instrumentos/rel",
       },
+      {
+        title: "Alunos",
+        icon: "mdi-account-group",
+        to: "/aluno/rel",
+      },
     ],
 
     right: null,

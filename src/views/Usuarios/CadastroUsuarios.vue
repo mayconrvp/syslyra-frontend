@@ -10,14 +10,14 @@
       <v-form @submit.prevent="grava()">
         <v-card>
           <v-container>
-            <v-select
+            <v-autocomplete
               v-model="funcionario"
               :items="funcionarios"
               item-value="id"
               item-text="nome"
               label="Selecione o funcionario"
               clearable
-            ></v-select>
+            ></v-autocomplete>
             <v-text-field v-model="login" label="Login"></v-text-field>
             <v-text-field
               v-model="senha"
@@ -238,7 +238,6 @@ export default {
           this.$router.push("/usuarios");
         },
         (err) => {
-          console.log(err);
           alert("Erro ao atualizar. Erro: " + err);
         }
       );

@@ -123,7 +123,7 @@ export default {
           .then((response) => {
             this.$toast.fire("PDF Gerado com sucesso", "", "success");
             window.open(
-              `http://localhost:3000/emprestimos/data/rel/${this.dataInicio}/${this.dataFim}`
+              `${this.$http.defaults.baseURL}emprestimos/data/rel/${this.dataInicio}/${this.dataFim}`
             );
             console.log(response);
           })
@@ -135,7 +135,7 @@ export default {
         .get("/emprestimos/rel")
         .then((response) => {
           this.$toast.fire("PDF Gerado com sucesso", "", "success");
-          window.open("http://localhost:3000/emprestimos/rel");
+          window.open(`${this.$http.defaults.baseURL}emprestimos/rel`);
           console.log(response);
         })
         .catch(() => {
@@ -149,7 +149,7 @@ export default {
           .then((response) => {
             this.$toast.fire("PDF Gerado com sucesso", "", "success");
             window.open(
-              `http://localhost:3000/emprestimos/aluno/rel/${emprestimo.id}/`
+              `${this.$http.defaults.baseURL}emprestimos/aluno/rel/${emprestimo.id}/`
             );
             console.log(response);
           })

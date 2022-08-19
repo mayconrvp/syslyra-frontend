@@ -6,7 +6,7 @@
     <div class="subtitle my-5 ml-3">
       <h4>Selecione o aluno para ser matriculado</h4>
 
-      <v-select
+      <v-autocomplete
         clearable
         v-model="aluno"
         :items="alunos"
@@ -15,7 +15,7 @@
         :error-messages="selectErrors"
         label="Aluno"
         required
-      ></v-select>
+      ></v-autocomplete>
       <div class="text-center">
         <v-btn
           id="btnA"
@@ -43,7 +43,6 @@ export default {
         { text: "Horário", value: "horario" },
         { text: "Ações", value: "actions", sortable: false },
       ],
-
       aluno: "",
       turmas: [],
       alunos: [],

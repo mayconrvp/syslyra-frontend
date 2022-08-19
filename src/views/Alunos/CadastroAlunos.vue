@@ -241,8 +241,6 @@ export default {
     };
   },
   created() {
-    console.log(this.id);
-
     if (this.id) {
       this.$http.get(`alunos/${this.id}`).then((response) => {
         this.nome = response.data.nome;
@@ -271,7 +269,6 @@ export default {
             this.estado +
             " - CEP: " +
             this.cep;
-          console.log(this.endereco);
         }
         this.idResponsavel = response.data.idResponsavel;
         this.idEscola = response.data.idEscola;
@@ -345,15 +342,15 @@ export default {
           email: this.email.toLowerCase(),
           cpf: this.cpf,
         };
-        console.log(data);
+
         this.$http
           .post("alunos", data)
           .then((response) => {
             this.$swal("Efetue o cadastro do Endereço do aluno", "", "info");
             this.$router.push(`/CadEnderecos/${response.data.id}`);
           })
-          .catch((err) => {
-            console.log(err);
+          .catch(() => {
+            //console.log(err);
             this.$toast.fire(
               "Não foi possível cadastrar o Aluno.",
               "",
@@ -398,13 +395,11 @@ export default {
 
         this.$http
           .put(`/alunos/${this.id}`, data)
-          .then((response) => {
-            console.log(response);
+          .then(() => {
             this.$router.go();
             this.$toast.fire("Aluno atualizado com sucesso", "", "success");
           })
-          .catch((err) => {
-            console.log(err);
+          .catch(() => {
             this.$toast.fire(
               "Não foi possível atualizar o aluno.",
               "",
@@ -428,31 +423,28 @@ export default {
       this.$router.push("/alunos");
     },
     verificaMaioridade(dateNasc) {
-      console.log(dateNasc);
+      //console.log(dateNasc);
       let date = new Date();
       let ano = date.getFullYear();
       let mes = date.getMonth() + 1;
       let dia = date.getDate();
-      console.log(dia, mes, ano);
+      //console.log(dia, mes, ano);
 
       let data = new Date(dateNasc);
       let diaNasc = String(data.getDate()).padStart(2, "0");
       let mesNasc = String(data.getMonth() + 1).padStart(2, "0");
       let anoNasc = data.getFullYear();
-      console.log(diaNasc, mesNasc, anoNasc);
+      //console.log(diaNasc, mesNasc, anoNasc);
 
       let idade = ano - anoNasc;
 
       if (mes < mesNasc || (mes == mesNasc && dia < diaNasc)) idade--;
-      console.log(idade);
+
       if (idade < 18) {
         return true;
       } else {
         return false;
       }
-    },
-    editarEndereco(id) {
-      console.log(id);
     },
   },
 };

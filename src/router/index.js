@@ -365,7 +365,7 @@ const routes = [
     menu: true
   },
   {
-    path: "/alunos/rel",
+    path: "/aluno/rel",
     name: "RelatorioAlunos",
     component: RelatorioAlunos,
     menu: true
